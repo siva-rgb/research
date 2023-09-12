@@ -1,25 +1,58 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AQI Prediction</title>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .divElem{
+            display: none;
+        }
+    </style>
+</head>
+<body>
     <center><h1>Air Quality Index</h1></center>
+    <div><label for="inpDate">Date</label>
+        <input type="date" name="" id="inpDate"></div>
     <div align="center" class="input-group flex-nowrap" id ="input1">
         <span class="input-group-text" id="addon-wrapping">Longitude</span>
-        <input type="text" class="form-control" placeholder="Please enter value" aria-label="Username" aria-describedby="addon-wrapping">
+        <input type="text" id="lat" class="form-control" placeholder="Please enter value" aria-label="Username" aria-describedby="addon-wrapping">
     </div>
     <div class="input-group flex-nowrap" id ="input2">
       <span class="input-group-text" id="addon-wrapping">Latitude</span>
-      <input type="text" class="form-control" placeholder="Please enter value" aria-label="Username" aria-describedby="addon-wrapping">
+      <input type="text" id="lon" class="form-control" placeholder="Please enter value" aria-label="Username" aria-describedby="addon-wrapping">
     </div>
-    <center><button type="button" class="btn btn-primary">Submit</button></center>
-    <center><img src="images\fig 2 img.png" alt="output" width ="600" height ="400"></center>
+    <center><button id="btnDisplay" type="button" class="btn btn-primary">Submit</button></center>
+   
     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-  </body>
+    <div id="myDiv" class="divElem">
+        <p id="inpMsg"></p>
+        <p id="avgVal">Average Value in the grid: 2.96e-02 mol/m^2</p>
+        <p id="midVal">Median Value in the Grid: 2.90-2 mol/m^2</p>
+        <p id="stdDev">Standard deviation in the Grid: 2.14e-03 mol/m^2</p>
+        <img id="imgCO" src="images\fig 2 img.png" alt="output" width ="600" height ="400">
+    
+    </div>
+
+    <script>
+        // const date= document.getElementById('inpDate');
+        // const lat= document.getElementById('input1');
+        // const lon=document.getElementById('input2');
+        const myDiv= document.getElementById('myDiv');
+        const avgVal=document.getElementById('avgVal');
+        const midVal=document.getElementById('midVal');
+        const imgCO=document.getElementById('imgCO');
+        const inpMsg= document.getElementById('inpMsg');
+        const btn= document.getElementById('btnDisplay');
+        btn.addEventListener('click', function(event){
+            event.preventDefault();
+
+            const text= document.getElementById('lat').value;
+            inpMsg.textContent= `${text}`
+            myDiv.classList.remove('divElem');
+        });
+
+
+    </script>
+</body>
 </html>
